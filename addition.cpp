@@ -1,38 +1,45 @@
-// Copyright (c) 2022 Lucas LeBlanc All rights reserved
-
+// Copyright (c) 2022 Lucas LeBlanc
+//
 // Created by: Lucas LeBlanc
 // Created on: Nov 2022
-// This program adds each whole number that goes up to the users number
+// This program uses while loops
 
 #include <iostream>
+#include <string>
+
+int positiveInteger;
+int loopCounter = 0;
+int addInt = 0;
+std::string positiveString;
 
 int main() {
-    // This function adds each whole number that goes up to the users number
-
-    int integer_a_i;
-    int counter = 0;
-    int the_sum = 0;
-    std::string integer_a_s;
+    // This function adds all the whole numbers up to the inputted number
 
     // Input
-    std::cout << "Enter a positive number: ";
-    std::cin >> integer_a_s;
-    std::cout << "" << std::endl;
 
-    // Process and Output
+    std::cout << "Enter a positive integer: ";
+    std::cin >> positiveString;
+    std::cout << std::endl;
+
+    // Process and output
     try {
-        integer_a_i = std::stoi(integer_a_s);
-
-        while (counter < integer_a_i) {
-            counter = counter + 1;
-            the_sum = the_sum + counter;
-            std::cout << "The sum of all positive numbers from 1 to "
-            << integer_a_s << " is " << the_sum << "." << std::endl;
-        }} catch (std::invalid_argument) {
-        std::cout << "That was not a valid input." << std::endl;
+        positiveInteger = std::stoi(positiveString);
+        if (positiveInteger > 0) {
+            while (loopCounter < positiveInteger) {
+                loopCounter = loopCounter + 1;
+                addInt = addInt + loopCounter;
+                if (loopCounter >= positiveInteger)
+                    std::cout << "The sum of all positive numbers from 1 to "
+                              << positiveInteger << " is " << addInt << std::endl;
             }
-    std::cout << "The sum of all positive numbers from 1 to "
-    << integer_a_s << " is " << the_sum << "." << std::endl;
+        } else {
+            std::cout << "" << positiveString
+                      << " is not a positive integer" << std::endl;
+        }
+    } catch (std::invalid_argument) {
+        std::cout << "" << positiveString
+                  << " is not a valid input." << std::endl;
+    }
 
-    std::cout << ("\nDone.") << std::endl;
+    std::cout << "\nDone.";
 }
